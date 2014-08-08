@@ -227,26 +227,24 @@ Translations of the guide are available in the following languages:
   strings. For hash literals two styles are considered acceptable.
 
   ```Ruby
-  # good - space after { and before }
+  # bad - no space after { and before } for block
+  [1, 2, 3].each {|x| x + 1}
+
+  # good - space after { and before } for block
+  [1, 2, 3].each { |x| x + 1 }
+
+  # bad - space after { and before } for hash
   { one: 1, two: 2 }
 
-  # good - no space after { and before }
+  # good - no space after { and before } for hash
   {one: 1, two: 2}
   ```
-
-  The first variant is slightly more readable (and arguably more
-  popular in the Ruby community in general). The second variant has
-  the advantage of adding visual difference between block and hash
-  literals. Whichever one you pick - apply it consistently.
-
-  As far as embedded expressions go, there are also two acceptable
-  options:
 
   ```Ruby
   # good - no spaces
   "string#{expr}"
 
-  # ok - arguably more readable
+  # bad
   "string#{ expr }"
   ```
 
@@ -508,7 +506,7 @@ Translations of the guide are available in the following languages:
                    body: source.text)
   end
 
-  # good (normal indent)
+  # good (normal indent) reccommended
   def send_mail(source)
     Mailer.deliver(
       to: 'bob@example.com',
